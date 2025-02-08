@@ -9,7 +9,7 @@ import { ReporteService } from '../../../services/reporte.service';
 })
 export class IndexReporteComponent {
   public token = localStorage.getItem('token') || '';
-  entidades = ['ventas', 'compras', 'ingresos', 'egresos', 'inventario'];
+  entidades = ['ventas', 'ingresos'];
   entidadSeleccionada = 'ventas';
   fechaInicio = '';
   fechaFin = '';
