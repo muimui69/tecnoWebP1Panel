@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { saveAs } from 'file-saver';
 import { ReporteService } from '../../../services/reporte.service';
-
+declare var toastr: any;
 @Component({
   selector: 'app-reporte',
   templateUrl: './index-reporte.component.html',
@@ -9,14 +9,14 @@ import { ReporteService } from '../../../services/reporte.service';
 })
 export class IndexReporteComponent {
   public token = localStorage.getItem('token') || '';
-  entidades = ['ventas', 'ingresos'];
+  entidades = ['ventas', 'compras', 'ingresos', 'egresos'];
   entidadSeleccionada = 'ventas';
   fechaInicio = '';
   fechaFin = '';
   email = '';
   asunto = 'Reporte de Datos';
   mensaje = 'Adjunto encontrarás el reporte solicitado.';
-
+  entidad = ''
   reporteDatos: any[] = [];
   isLoading: boolean = false;
 
@@ -24,14 +24,16 @@ export class IndexReporteComponent {
 
   generarReporte() {
     if (!this.fechaInicio || !this.fechaFin) {
-      alert('Seleccione un rango de fechas válido.');
+      toastr.error('Seleccione un rango de fechas válido.');
       return;
     }
 
     this.isLoading = true;
     this.reporteService.obtenerReporte(this.entidadSeleccionada, this.fechaInicio, this.fechaFin, this.token)
       .subscribe((res: any) => {
+        console.log('Reporte obtenido:', res);
         this.reporteDatos = res.data || [];
+        this.entidad = res.entidad || '';
         this.isLoading = false;
         if (this.reporteDatos.length === 0) {
           alert('No hay datos en el rango de fechas seleccionado.');
@@ -58,22 +60,25 @@ export class IndexReporteComponent {
 
   enviarReporte() {
     if (!this.email) {
-      alert('Ingrese un correo válido.');
+      toastr.error('Ingrese un correo electrónico válido.');
       return;
     }
 
-    this.reporteService.enviarReporteCorreo(
-      this.entidadSeleccionada,
-      this.fechaInicio,
-      this.fechaFin,
-      this.email,
-      this.asunto,
-      this.mensaje,
-      this.token
+    this.reporteService.enviarReporteCorreo({
+      entidad: this.entidadSeleccionada,
+      inicio: this.fechaInicio,
+      fin: this.fechaFin,
+      email: this.email,
+      asunto: this.asunto,
+      mensaje: this.mensaje
+    }
+      , this.token
     ).subscribe(response => {
-      alert('Reporte enviado correctamente.');
+      console.log('Reporte enviado:', response);
+      toastr.success('Reporte enviado correctamente.');
     }, error => {
       console.error('Error al enviar el reporte:', error);
+      toastr.error('Error al enviar el reporte.');
     });
   }
 }

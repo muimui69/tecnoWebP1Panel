@@ -6,23 +6,13 @@
       <app-topbar></app-topbar>
       <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="toolbar" id="kt_toolbar">
-          <div
-            id="kt_toolbar_container"
-            class="container-fluid d-flex flex-stack"
-          >
-            <div
-              data-kt-swapper="true"
-              data-kt-swapper-mode="prepend"
+          <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
               data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
-              class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0"
-            >
-              <h1
-                class="d-flex align-items-center text-dark fw-bolder fs-3 my-1"
-              >
+              class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+              <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">
                 dashboard
-                <span
-                  class="h-20px border-gray-400 border-start ms-3 mx-2"
-                ></span>
+                <span class="h-20px border-gray-400 border-start ms-3 mx-2"></span>
                 <ol class="breadcrumb text-muted fs-6 fw-semibold">
                   <li class="breadcrumb-item pe-3">Ingresos</li>
                 </ol>
@@ -37,17 +27,10 @@
               <div class="col-12">
                 <div class="card mb-10">
                   <!--begin::Card header-->
-                  <div
-                    class="card-header py-7"
-                    style="border-bottom: 0px; padding-bottom: 10px !important"
-                  >
+                  <div class="card-header py-7" style="border-bottom: 0px; padding-bottom: 10px !important">
                     <h3 class="card-title align-items-start flex-column">
-                      <span class="card-label text-gray-800 fw-700"
-                        >Nuevo Ingresos</span
-                      >
-                      <span
-                        class="text-gray-400 mt-1 fw-semibold fs-6 d-none d-sm-block"
-                      >
+                      <span class="card-label text-gray-800 fw-700">Nuevo Ingresos</span>
+                      <span class="text-gray-400 mt-1 fw-semibold fs-6 d-none d-sm-block">
                         Lorem, ipsum dolor sit amet consectetur adipisicing
                         elit. Iure, laboriosam.
                       </span>
@@ -62,11 +45,7 @@
                     <div class="d-flex flex-stack">
                       <div class="d-flex">
                         <div class="d-flex flex-column">
-                          <a
-                            
-                            class="fs-5 text-gray-900 text-hover-primary fw-bold"
-                            >Tipo</a
-                          >
+                          <a class="fs-5 text-gray-900 text-hover-primary fw-bold">Tipo</a>
                           <div class="fs-6 fw-semibold text-gray-500">
                             Plan properly your workflow
                           </div>
@@ -78,7 +57,7 @@
                             Seleccionar
                           </option>
                           <option value="Compra">Compra</option>
-                          <option value="Devolucion">Devolucion</option>
+                          <option value="Ingreso">Ingreso</option>
                         </select>
                       </div>
                     </div>
@@ -87,11 +66,7 @@
                     <div class="d-flex flex-stack">
                       <div class="d-flex">
                         <div class="d-flex flex-column">
-                          <a
-                            
-                            class="fs-5 text-gray-900 text-hover-primary fw-bold"
-                            >Almacen</a
-                          >
+                          <a class="fs-5 text-gray-900 text-hover-primary fw-bold">Almacen</a>
                           <div class="fs-6 fw-semibold text-gray-500">
                             Plan properly your workflow
                           </div>
@@ -107,70 +82,50 @@
                       </div>
                     </div>
                     <div class="separator separator-dashed my-5"></div>
-                   
+
                     <div *ngIf="ingreso.tipo=='Compra'" class="d-flex flex-stack">
                       <div class="d-flex">
                         <div class="d-flex flex-column">
-                          <a
-                            
-                            class="fs-5 text-gray-900 text-hover-primary fw-bold"
-                            >Proveedor</a
-                          >
+                          <a class="fs-5 text-gray-900 text-hover-primary fw-bold">Proveedor</a>
                           <div class="fs-6 fw-semibold text-gray-500">
                             Plan properly your workflow
                           </div>
                         </div>
                       </div>
                       <div class="d-flex justify-content-end">
-                        <select  name="proveedor" class="form-select" [(ngModel)]="ingreso.proveedor">
+                        <select name="proveedor" class="form-select" [(ngModel)]="ingreso.proveedor">
                           <option value="" selected disabled>
                             Seleccionar
                           </option>
                           <option [value]="item._id" *ngFor="let item of proveedores">{{item.nombre}}</option>
-                         
+
                         </select>
                       </div>
                     </div>
 
-                      <div *ngIf="ingreso.tipo=='Devolucion'" class="d-flex flex-stack">
-                        <div class="d-flex">
-                          <div class="d-flex flex-column">
-                            <a
-                              
-                              class="fs-5 text-gray-900 text-hover-primary fw-bold"
-                              >Razon</a
-                            >
-                            <div class="fs-6 fw-semibold text-gray-500">
-                              Plan properly your workflow
-                            </div>
+                    <div *ngIf="ingreso.tipo=='Ingreso'" class="d-flex flex-stack">
+                      <div class="d-flex">
+                        <div class="d-flex flex-column">
+                          <a class="fs-5 text-gray-900 text-hover-primary fw-bold">Razon</a>
+                          <div class="fs-6 fw-semibold text-gray-500">
+                            Plan properly your workflow
                           </div>
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Razon"
-                                name="razon"
-                                [(ngModel)]="ingreso.razon"
-                            />   
-                        </div>
                       </div>
+                      <div class="d-flex justify-content-end">
+                        <input type="text" class="form-control" placeholder="Razon" name="razon"
+                          [(ngModel)]="ingreso.razon" />
+                      </div>
+                    </div>
                   </div>
-                  
+
                 </div>
 
                 <div class="card">
-                  <div
-                    class="card-header py-7"
-                    style="border-bottom: 0px; padding-bottom: 10px !important"
-                  >
+                  <div class="card-header py-7" style="border-bottom: 0px; padding-bottom: 10px !important">
                     <h3 class="card-title align-items-start flex-column">
-                      <span class="card-label text-gray-800 fw-700"
-                        >Detalle de Ingresos</span
-                      >
-                      <span
-                        class="text-gray-400 mt-1 fw-semibold fs-6 d-none d-sm-block"
-                      >
+                      <span class="card-label text-gray-800 fw-700">Detalle de Ingresos</span>
+                      <span class="text-gray-400 mt-1 fw-semibold fs-6 d-none d-sm-block">
                         Lorem, ipsum dolor sit amet consectetur adipisicing
                         elit. Iure, laboriosam.
                       </span>
@@ -180,61 +135,37 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <input
-                          id="srtProducto"
-                          type="text"
-                          class="form-control cursor-pointer"
-                          placeholder="Producto"
-                          readonly
-                          data-bs-toggle="modal"
-                          [attr.data-bs-target]="'#modalProducto'"
-                          [(ngModel)]="nombreProducto"
-                        />
+                        <input id="srtProducto" type="text" class="form-control cursor-pointer" placeholder="Producto"
+                          readonly data-bs-toggle="modal" [attr.data-bs-target]="'#modalProducto'"
+                          [(ngModel)]="nombreProducto" />
                       </div>
                       <div class="col">
-                        <select name="producto_variedad"
-                        [(ngModel)]="detalleIngreso.producto_variedad"
-                        (change)="seleccionVariacion()"
-                        class="form-select">
+                        <select name="producto_variedad" [(ngModel)]="detalleIngreso.producto_variedad"
+                          (change)="seleccionVariacion()" class="form-select">
                           <option value="" selected disabled>
                             Seleccionar
                           </option>
-                          <option [value]="variacion._id" *ngFor="let variacion of variacionesProducto">{{variacion.color}} {{variacion.talla}}</option>
-                          
+                          <option [value]="variacion._id" *ngFor="let variacion of variacionesProducto">
+                            {{variacion.color}} {{variacion.talla}}</option>
+
                         </select>
                       </div>
                       <div class="col">
-                        <input
-                          type="number"
-                          class="form-control"
-                          placeholder="Precio Unitario"
-                          name="precioUnidad"
-                          [(ngModel)]="detalleIngreso.precioUnidad"
-                        />
+                        <input type="number" class="form-control" placeholder="Precio Unitario" name="precioUnidad"
+                          [(ngModel)]="detalleIngreso.precioUnidad" />
                       </div>
                       <div class="col">
-                        <input
-                          type="number"
-                          class="form-control"
-                          placeholder="Cantidad"
-                          name="cantidad"
-                          [(ngModel)]="detalleIngreso.cantidad"
-                        />
+                        <input type="number" class="form-control" placeholder="Cantidad" name="cantidad"
+                          [(ngModel)]="detalleIngreso.cantidad" />
                       </div>
                       <div class="col-12 mb-10" style="margin-top: 1rem">
-                        <a class="text-primary cursor-pointer"
-                          (click)="agregarDetalle()"
-                          >Agregar detalle</a
-                        >
+                        <a class="text-primary cursor-pointer" (click)="agregarDetalle()">Agregar detalle</a>
                       </div>
 
                       <div class="col-12">
                         <div id="" class="table-responsive">
-                          <table
-                            class="table align-middle table-row-dashed fs-6 gy-3 dataTable"
-                            id="kt_table_widget_5_table"
-                            style="width: 694.891px"
-                          >
+                          <table class="table align-middle table-row-dashed fs-6 gy-3 dataTable"
+                            id="kt_table_widget_5_table" style="width: 694.891px">
                             <colgroup>
                               <col style="width: 150px" />
                               <col style="width: 100px" />
@@ -243,20 +174,16 @@
                               <col style="width: 119.891px" />
                               <col style="width: 75px" />
                             </colgroup>
-                           
+
 
                             <!--begin::Table body-->
                             <tbody class="fw-bold text-gray-600">
                               <tr class="odd" *ngFor="let item of detalles; 
-                               let idx=index"
-                               >
+                               let idx=index">
                                 <!--begin::Item-->
                                 <td>
-                                  <a
-                                    href="/metronic8/demo1/apps/ecommerce/catalog/edit-product.html"
-                                    class="text-gray-900 text-hover-primary"
-                                    >{{item.productoTitulo}}</a
-                                  >
+                                  <a href="/metronic8/demo1/apps/ecommerce/catalog/edit-product.html"
+                                    class="text-gray-900 text-hover-primary">{{item.productoTitulo}}</a>
                                   <br>
                                   <small class="text-primary">
                                     {{item.color}} {{item.talla}}
@@ -265,26 +192,24 @@
                                 <!--end::Item-->
 
                                 <!--begin::Product ID-->
-                                <td class="text-end"> {{item.cantidad}} 
+                                <td class="text-end"> {{item.cantidad}}
                                   <small> unidades </small>
                                 </td>
-                                
+
                                 <!--end::Product ID-->
 
                                 <!--begin::Date added-->
-                                <td
-                                  class="text-end"
-                           
-                                >
-                                 {{item.precioUnidad|currency:'BOB'}}
-                                 <small> por unidad</small>
+                                <td class="text-end">
+                                  {{item.precioUnidad|currency:'BOB'}}
+                                  <small> por unidad</small>
                                 </td>
-                               
+
                                 <!--end::Date added-->
 
                                 <!--begin::Price-->
-                                <td class="text-end dt-type-numeric"> {{ item.cantidad*item.precioUnidad|currency:'BOB' }} </td>
-                                
+                                <td class="text-end dt-type-numeric"> {{ item.cantidad*item.precioUnidad|currency:'BOB'
+                                  }} </td>
+
                                 <td class="text-end">
                                   <button (click)="quitarDetalle(idx)" class="btn btn-text-red-500">Quitar</button>
                                 </td>
@@ -306,13 +231,7 @@
   </div>
 </div>
 
-<div
-  class="modal fade"
-  id="modalProducto"
-  tabindex="-1"
-  style="display: none"
-  aria-hidden="true"
->
+<div class="modal fade" id="modalProducto" tabindex="-1" style="display: none" aria-hidden="true">
   <!--begin::Modal dialog-->
   <div class="modal-dialog modal-dialog-centered mw-650px">
     <!--begin::Modal content-->
@@ -320,37 +239,13 @@
       <!--begin::Modal header-->
       <div class="modal-header pb-0 border-0 justify-content-end">
         <!--begin::Close-->
-        <div
-          class="btn btn-sm btn-icon btn-active-color-primary"
-          data-bs-dismiss="modal"
-        >
-          <span class="svg-icon svg-icon-muted svg-icon-2hx"
-            ><svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                opacity="0.5"
-                x="6"
-                y="17.3137"
-                width="16"
-                height="2"
-                rx="1"
-                transform="rotate(-45 6 17.3137)"
-                fill="currentColor"
-              />
-              <rect
-                x="7.41422"
-                y="6"
-                width="16"
-                height="2"
-                rx="1"
-                transform="rotate(45 7.41422 6)"
-                fill="currentColor"
-              />
+        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+          <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)"
+                fill="currentColor" />
+              <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)"
+                fill="currentColor" />
             </svg>
           </span>
         </div>
@@ -361,11 +256,7 @@
       <!--begin::Modal body-->
       <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
         <!--begin:Form-->
-        <form
-          id="kt_modal_new_target_form"
-          class="form fv-plugins-bootstrap5 fv-plugins-framework"
-          action="#"
-        >
+        <form id="kt_modal_new_target_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
           <!--begin::Heading-->
           <div class="mb-13 text-center">
             <!--begin::Title-->
@@ -386,49 +277,36 @@
 
             <!--end::Label-->
 
-            <input
-              type="text"
-              class="form-control form-control-solid"
-              placeholder="Busca tu producto"
-              name="filtroProducto"
-              [(ngModel)]="filtroProducto"
-              (keyup.ENTER)="initProducto()"
-            />
+            <input type="text" class="form-control form-control-solid" placeholder="Busca tu producto"
+              name="filtroProducto" [(ngModel)]="filtroProducto" (keyup.ENTER)="initProducto()" />
           </div>
 
           <div class="mh-375px scroll-y me-n7 pe-7">
             <!--begin::User-->
 
-         
-              <a
-               
-                class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1"
-                *ngFor="let item of productos"
-                (click)="seleccionarProducto(item)"
-              >
-                <!--begin::Avatar-->
-                <div class="symbol symbol-35px symbol-circle me-5">
-                  <img
-                    alt="Pic"
-                    [src]="url+'/getProductoPortada/'+item.portada"
-                  />
-                </div>
-                <!--end::Avatar-->
 
-                <!--begin::Info-->
-                <div class="fw-semibold">
-                  <span class="fs-6 text-gray-800 me-2"> {{item.titulo}} </span>
-                  <br>
-                  <code>
+            <a class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1"
+              *ngFor="let item of productos" (click)="seleccionarProducto(item)">
+              <!--begin::Avatar-->
+              <div class="symbol symbol-35px symbol-circle me-5">
+                <img alt="Pic" [src]="url+'/getProductoPortada/'+item.portada" />
+              </div>
+              <!--end::Avatar-->
+
+              <!--begin::Info-->
+              <div class="fw-semibold">
+                <span class="fs-6 text-gray-800 me-2"> {{item.titulo}} </span>
+                <br>
+                <code>
                     {{item.categoria.titulo}} -
                     {{item.subcategorias}}
                   </code>
-                </div>
-                <!--end::Info-->
-              </a>
-            
-              <!--begin::Avatar-->
-            
+              </div>
+              <!--end::Info-->
+            </a>
+
+            <!--begin::Avatar-->
+
 
             <!--end::User-->
           </div>
@@ -441,7 +319,7 @@
           <!--end::Input group-->
 
           <!--begin::Actions-->
-        
+
           <!--end::Actions-->
         </form>
         <!--end:Form-->

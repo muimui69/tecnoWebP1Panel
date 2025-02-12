@@ -25,7 +25,6 @@ export class CreateIngresosComponent {
   public proveedores: Array<any> = []
   public almacenes: Array<any> = []
   public ingreso: any = {
-    proveedor: '',
     almacen: '',
     tipo: ''
   }
@@ -110,7 +109,7 @@ export class CreateIngresosComponent {
     if (this.ingreso.tipo == 'Compra') {
       this.ingreso.tipo = 'Compra'
     } else {
-      this.ingreso.tipo = 'Devolucion'
+      this.ingreso.tipo = 'Ingreso'
     }
   }
 

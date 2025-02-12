@@ -22,14 +22,8 @@ export class ReporteService {
         return this._http.get(this.url + `/reporte/pdf?entidad=${entidad}&inicio=${inicio}&fin=${fin}`, { headers: headers, responseType: 'blob' });
     }
 
-    // enviarReporteCorreo(entidad: string, inicio: string, fin: string, emails: string, subject: string, body: string, token: any): Observable<any> {
-    //     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token });
-    //     return this._http.post(this.url + `/reporte/enviar?entidad=${entidad}&inicio=${inicio}&fin=${fin}&emails=${emails}&subject=${subject}&body=${body}`, {}, { headers: headers });
-    // }
-
-    enviarReporteCorreo(entidad: string, inicio: string, fin: string, emails: string, subject: string, body: string, token: any): Observable<any> {
+    enviarReporteCorreo(data: any, token: any): Observable<any> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': token });
-        const payload = { entidad, inicio, fin, emails, subject, body };
-        return this._http.post(this.url + '/reporte/enviar', payload, { headers: headers });
+        return this._http.post(this.url + '/reporte/enviar', data, { headers: headers });
     }
 }

@@ -58,11 +58,57 @@
 
                                 <hr>
 
-                                <div class="table-responsive mt-4" *ngIf="reporteDatos.length > 0">
+                                <div class="table-responsive mt-4" *ngIf="reporteDatos.length > 0 && entidad=='ventas'">
                                     <table class="table table-bordered table-striped">
                                         <thead class="table-dark">
                                             <tr>
                                                 <th>#</th>
+                                                <th>Fecha</th>
+                                                <th>Total</th>
+                                                <th>Cliente</th>
+                                                <th>Estado</th>
+
+                                                <th>Detalles</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of reporteDatos; let i = index">
+                                                <td>{{ i + 1 }}</td>
+                                                <td>{{ item.createdAT | date:'dd/MM/yyyy' }}</td>
+                                                <td>{{ item.total | currency:'BOB' }}</td>
+                                                <td>{{ item.cliente.email }}</td>
+                                                <td>
+                                                    <span class="badge" [ngClass]="{
+                                                            'badge-success': item.estado === 'Confirmado', 
+                                                            'badge-warning': item.estado === 'Procesado',
+                                                            'badge-danger': item.estado === 'Cancelado'
+                                                        }">
+                                                        {{ item.estado }}
+                                                    </span>
+                                                </td>
+
+                                                <td>
+                                                    <a class="btn btn-sm btn-info"
+                                                        [routerLink]="['/ventas/detalles', item._id]">🔍 Ver</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="alert alert-info text-center mt-3" *ngIf="reporteDatos.length === 0">
+                                    No hay datos disponibles en el rango de fechas seleccionado.
+                                </div>
+
+                                <div class="table-responsive mt-4"
+                                    *ngIf="reporteDatos.length > 0 && entidad=='compras'">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Usuario</th>
+                                                <th>Almacen</th>
+                                                <th>Proovedor</th>
                                                 <th>Fecha</th>
                                                 <th>Total</th>
                                                 <th>Estado</th>
@@ -72,6 +118,51 @@
                                         <tbody>
                                             <tr *ngFor="let item of reporteDatos; let i = index">
                                                 <td>{{ i + 1 }}</td>
+                                                <td>{{ item.usuario.email }}</td>
+                                                <td>{{ item.almacen.nombre }}</td>
+                                                <td>{{ item.proveedor.nombre }}</td>
+                                                <td>{{ item.createdAT | date:'dd/MM/yyyy' }}</td>
+                                                <td>{{ item.total | currency:'BOB' }}</td>
+                                                <td>
+                                                    <span class="badge" [ngClass]="{
+                                                            'badge-success': item.estado === 'Confirmado', 
+                                                            'badge-warning': item.estado === 'Procesado',
+                                                            'badge-danger': item.estado === 'Cancelado'
+                                                        }">
+                                                        {{ item.estado }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-info"
+                                                        [routerLink]="['/ingresos/detalles', item._id]">🔍 Ver</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="table-responsive mt-4"
+                                    *ngIf="reporteDatos.length > 0 && entidad=='ingresos'">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Usuario</th>
+                                                <th>Almacen</th>
+                                                <th>Razon</th>
+                                                <th>Fecha</th>
+                                                <th>Total</th>
+                                                <th>Estado</th>
+                                                <th>Detalles</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of reporteDatos; let i = index">
+                                                <td>{{ i + 1 }}</td>
+                                                <td>{{ item.usuario.email }}</td>
+                                                <td>{{ item.almacen.nombre }}</td>
+                                                <td>{{ item.razon }}</td>
                                                 <td>{{ item.createdAT | date:'dd/MM/yyyy' }}</td>
                                                 <td>{{ item.total | currency:'USD' }}</td>
                                                 <td>
@@ -92,9 +183,46 @@
                                     </table>
                                 </div>
 
-                                <div class="alert alert-info text-center mt-3" *ngIf="reporteDatos.length === 0">
-                                    No hay datos disponibles en el rango de fechas seleccionado.
+                                <div class="table-responsive mt-4"
+                                    *ngIf="reporteDatos.length > 0 && entidad=='egresos'">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Usuario</th>
+                                                <th>Almacen</th>
+                                                <th>Razon</th>
+                                                <th>Fecha</th>
+                                                <th>Estado</th>
+                                                <th>Detalles</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of reporteDatos; let i = index">
+                                                <td>{{ i + 1 }}</td>
+                                                <td>{{ item.usuario.email }}</td>
+                                                <td>{{ item.almacen.nombre }}</td>
+                                                <td>{{ item.razon }}</td>
+                                                <td>{{ item.createdAT | date:'dd/MM/yyyy' }}</td>
+                                                <td>
+                                                    <span class="badge" [ngClass]="{
+                                                            'badge-success': item.estado === 'Confirmado', 
+                                                            'badge-warning': item.estado === 'Procesado',
+                                                            'badge-danger': item.estado === 'Cancelado'
+                                                        }">
+                                                        {{ item.estado }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-info"
+                                                        [routerLink]="['/ventas/detalles', item._id]">🔍 Ver</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
+
+
 
                                 <hr>
 
