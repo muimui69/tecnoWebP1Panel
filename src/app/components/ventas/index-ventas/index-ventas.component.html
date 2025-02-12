@@ -1,187 +1,211 @@
-
 <div class="d-flex flex-column flex-root">
-    <!--begin::Page-->
-    <div class="page d-flex flex-row flex-column-fluid">
-      <!--begin::Aside-->
-      <app-sidebar></app-sidebar>
-      <!--end::Aside-->
-      <!--begin::Wrapper-->
-      <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-        <!--begin::Header-->
-        <app-topbar></app-topbar>
-        <!--end::Header-->
-        <!--begin::Content-->
-        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-          <!--begin::Toolbar-->
-          <div class="toolbar" id="kt_toolbar">
-            <!--begin::Container-->
-            <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
-              <!--begin::Page title-->
-              <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-                <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">dashboard
-                    <span class="h-20px border-gray-400 border-start ms-3 mx-2"></span>
-                    <ol class="breadcrumb text-muted fs-6 fw-semibold">
-                      
-                      <li class="breadcrumb-item pe-3 ">Ventas</li>
-                    </ol>
-                  </h1>
-                <!--end::Title-->
-              </div>
-              <!--end::Page title-->
-              <!--begin::Actions-->
-              <div class="d-flex align-items-center py-1">
-                
-             
-                <!--end::Button-->
-              </div>
-              <!--end::Actions-->
-            </div>
-            <!--end::Container-->
-          </div>
-          <!--end::Toolbar-->
-          <!--begin::Post-->
-          <div class="post d-flex flex-column-fluid" id="kt_post">
-            <!--begin::Container-->
-            <div id="kt_content_container" class="container-xxl">
-                
-              <div class="row gy-5 g-xl-8">
-                <div class="col-12">
-                    <div class="card h-xl-100">
-                        <!--begin::Card header-->
-                        <div class="card-header py-7">
-                            <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label  text-gray-800 fw-700">Ventas</span>
-                                <span class="text-gray-400 mt-1 fw-semibold fs-6 d-none d-sm-block">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, laboriosam.
-                                </span>
-                            </h3>
+  <!--begin::Page-->
+  <div class="page d-flex flex-row flex-column-fluid">
+    <!--begin::Aside-->
+    <app-sidebar></app-sidebar>
+    <!--end::Aside-->
+    <!--begin::Wrapper-->
+    <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+      <!--begin::Header-->
+      <app-topbar></app-topbar>
+      <!--end::Header-->
+      <!--begin::Content-->
+      <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Toolbar-->
+        <div class="toolbar" id="kt_toolbar">
+          <!--begin::Container-->
+          <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+            <!--begin::Page title-->
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
+              data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+              class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+              <!--begin::Title-->
+              <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">dashboard
+                <span class="h-20px border-gray-400 border-start ms-3 mx-2"></span>
+                <ol class="breadcrumb text-muted fs-6 fw-semibold">
 
-                            <a (click)="descargarExcel()" style="cursor: pointer; background:#206736;" class="btn btn-light-dark btn-sm mb-3 text-white" data-bs-toggle="modal">
-                              exportar XLS
-                          </a>
-                            <!--end::Title-->
-                    
-                            <!--begin::Create campaign button-->
-                           
-                            <!--end::Create campaign button-->
-                        </div>
-                        <!--end::Card header-->
-                       
-                        <!--begin::Card body-->
-                        <div class="card-body pt-4">
-                                
-                            <div class="d-flex justify-content-between" style="    margin-bottom: 2rem !important;">
-                                <div class="input-group " style=" max-width: fit-content !important;">
-                                    <input id="kt_daterangepicker_1" type="text" class="form-control form-control-solid w-350px  form-control-sm" />
-                                  
-                                </div>
-                                
-                    
-                             
-                                
-                            </div>
-                            
-                      
-                    
-                            <!--begin::Seprator-->
-                            <div class="separator separator-dashed my-5"></div>
-                            <!--end::Seprator-->
-                    
-                            <ng-container *ngIf="ventas.length>=1" >
-                                <div class="card mb-5" style="background: #f5f8fa !important" *ngFor="let item of ventas| slice:(page-1) * pageSize: (page-1) * pageSize+pageSize ; let idx=index ">
-                                    <div class="card-body">
-                                        
-    
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <span class="fw-700 fs-4 mb-3 text-gray-900"> 
-                                                    #{{item.createdAT| date:'YYYY'  }}
-                                                 </span>
-            
-                                                 <div class="d-flex flex-wrap fw-semibold fs-6  pe-2">
-                                                    <a  class="d-flex align-items-center text-gray-500  me-5 mb-2">
-                                                    {{item.cliente.nombres.split(' ')[0]}}
-                                                     {{item.cliente.apellidos.split(' ')[0]}}
-                                                    </a>
-                                                    <a  class="d-flex align-items-center text-gray-500  me-5 mb-2">
-                                                    {{item.createdAT| date}}
-                                                    </a>
-                                                    <a  class="d-flex align-items-center text-gray-500  mb-2 me-5">
-                                                         {{item.proveedor}}
-                                                    </a>
-    
-                                                    <span class="badge " [ngClass]="{'badge-primary': item.estado=='Procesado', 'badge-danger':item.estado=='Cancelado', 'badge-success':item.estado=='Confirmado' }" style="height: 20px !important;">{{item.estado}}</span>
-                                                   
-                                                </div>
-    
-                                                <ul *ngIf="tienePermiso('detalles de venta')" style="list-style: none; padding-left: 0px; margin-bottom: 0px;  ">
-                                                    <li>
-                                                       <a [routerLink]="['/ventas/detalles',item._id]">
-                                                        <code style="color: blue;">
+                  <li class="breadcrumb-item pe-3 ">Ventas</li>
+                </ol>
+              </h1>
+              <!--end::Title-->
+            </div>
+            <!--end::Page title-->
+            <!--begin::Actions-->
+            <div class="d-flex align-items-center py-1">
+
+
+              <!--end::Button-->
+            </div>
+            <!--end::Actions-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Toolbar-->
+        <!--begin::Post-->
+        <div class="post d-flex flex-column-fluid" id="kt_post">
+          <!--begin::Container-->
+          <div id="kt_content_container" class="container-xxl">
+
+            <div class="row gy-5 g-xl-8">
+              <div class="col-12">
+                <div class="card h-xl-100">
+                  <!--begin::Card header-->
+                  <div class="card-header py-7">
+                    <h3 class="card-title align-items-start flex-column">
+                      <span class="card-label  text-gray-800 fw-700">Ventas</span>
+                      <span class="text-gray-400 mt-1 fw-semibold fs-6 d-none d-sm-block">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, laboriosam.
+                      </span>
+                    </h3>
+
+                    <a (click)="descargarExcel()" style="cursor: pointer; background:#206736;"
+                      class="btn btn-light-dark btn-sm mb-3 text-white" data-bs-toggle="modal">
+                      exportar XLS
+                    </a>
+                    <!--end::Title-->
+
+                    <!--begin::Create campaign button-->
+
+                    <!--end::Create campaign button-->
+                  </div>
+                  <!--end::Card header-->
+
+                  <!--begin::Card body-->
+                  <div class="card-body pt-4">
+
+                    <div class="d-flex justify-content-between" style="    margin-bottom: 2rem !important;">
+                      <div class="input-group " style=" max-width: fit-content !important;">
+                        <input id="kt_daterangepicker_1" type="text"
+                          class="form-control form-control-solid w-350px  form-control-sm" />
+
+                      </div>
+
+
+
+
+                    </div>
+
+
+
+                    <!--begin::Seprator-->
+                    <div class="separator separator-dashed my-5"></div>
+                    <!--end::Seprator-->
+
+                    <ng-container *ngIf="ventas.length>=1">
+                      <div class="card mb-5" style="background: #f5f8fa !important"
+                        *ngFor="let item of ventas| slice:(page-1) * pageSize: (page-1) * pageSize+pageSize ; let idx=index ">
+                        <div class="card-body">
+
+
+                          <div class="d-flex justify-content-between">
+                            <div>
+                              <span class="fw-700 fs-4 mb-3 text-gray-900">
+                                #{{item.createdAT| date:'YYYY' }}
+                              </span>
+
+                              <div class="d-flex flex-wrap fw-semibold fs-6  pe-2">
+                                <a class="d-flex align-items-center text-gray-500  me-5 mb-2">
+                                  {{item.cliente.nombres.split(' ')[0]}}
+                                  {{item.cliente.apellidos.split(' ')[0]}}
+                                </a>
+                                <a class="d-flex align-items-center text-gray-500  me-5 mb-2">
+                                  {{item.createdAT| date}}
+                                </a>
+                                <a class="d-flex align-items-center text-gray-500  mb-2 me-5">
+                                  {{item.proveedor}}
+                                </a>
+
+                                <span class="badge "
+                                  [ngClass]="{'badge-primary': item.estado=='Procesado', 'badge-danger':item.estado=='Cancelado', 'badge-success':item.estado=='Confirmado' }"
+                                  style="height: 20px !important;">{{item.estado}}</span>
+
+                              </div>
+
+                              <div class="d-flex flex-wrap fw-semibold fs-6  pe-2">
+                                <a class="d-flex align-items-center text-gray-500  me-5 mb-2">
+                                  Transaccion Tigo: {{item.detallePago?.transaccionTigo || 'No tiene' }}
+                                </a>
+
+                              </div>
+                              <div class="d-flex flex-wrap fw-semibold fs-6  pe-2">
+                                <a class="d-flex align-items-center text-gray-500  me-5 mb-2">
+                                  Estado de Transaccion: {{item.detallePago?.messageEstado || 'No tiene' }}
+                                </a>
+
+                              </div>
+
+                              <ul *ngIf="tienePermiso('detalles de venta')"
+                                style="list-style: none; padding-left: 0px; margin-bottom: 0px;  ">
+                                <li>
+                                  <a [routerLink]="['/ventas/detalles',item._id]">
+                                    <code style="color: blue;">
                                                             Detalles
                                                         </code>
-                                                       </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 "
-                                            style="background-color: white;"
-                                            >
-                                                <!--begin::Number-->
-                                                <div  class="d-flex align-items-center">
-                                                    <div class="fs-2 fw-bold " >  {{item.total| currency:'BOB' }} </div>
-                                                </div>
-                                                <!--end::Number-->
-                
-                                                <!--begin::Label-->
-                                                <div class="fw-semibold fs-6 text-gray-500">Total</div>
-                                                <!--end::Label-->
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </ng-container>
-                            <ng-container *ngIf="ventas.length==0" >
-                                <div data-kt-search-element="empty" class="text-center">
-                                    <!--begin::Icon-->
-                                    <div class="pt-10 pb-5">
-                                        <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor"/>
-                                            <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"/>
-                                            </svg>
-                                            </span>
-                                    </div>
-                                    <!--end::Icon-->
-                                
-                                    <!--begin::Message-->
-                                    <div class="pb-15 fw-semibold">
-                                        <h3 class="text-gray-600 fs-5 mb-2">no se encontraron resultados</h3>
-                                        <div class="text-muted fs-7">Vuelva a intentar con una consulta diferente</div>
-                                    </div>
-                                    <!--end::Message-->
-                                </div>
-                            </ng-container>
-                        </div>
-                        <!--end::Card body-->
-                        <div class="card-footer" >
-                            <ngb-pagination [collectionSize]="ventas.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" aria-label="Default pagination"></ngb-pagination>
-                        </div>
-                    </div>
-              
-                </div>
-              </div>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 "
+                              style="background-color: white;">
+                              <!--begin::Number-->
+                              <div class="d-flex align-items-center">
+                                <div class="fs-2 fw-bold "> {{item.total| currency:'BOB' }} </div>
+                              </div>
+                              <!--end::Number-->
 
+                              <!--begin::Label-->
+                              <div class="fw-semibold fs-6 text-gray-500">Total</div>
+                              <!--end::Label-->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="ventas.length==0">
+                      <div data-kt-search-element="empty" class="text-center">
+                        <!--begin::Icon-->
+                        <div class="pt-10 pb-5">
+                          <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24"
+                              viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1"
+                                transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+                              <path
+                                d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                fill="currentColor" />
+                            </svg>
+                          </span>
+                        </div>
+                        <!--end::Icon-->
+
+                        <!--begin::Message-->
+                        <div class="pb-15 fw-semibold">
+                          <h3 class="text-gray-600 fs-5 mb-2">no se encontraron resultados</h3>
+                          <div class="text-muted fs-7">Vuelva a intentar con una consulta diferente</div>
+                        </div>
+                        <!--end::Message-->
+                      </div>
+                    </ng-container>
+                  </div>
+                  <!--end::Card body-->
+                  <div class="card-footer">
+                    <ngb-pagination [collectionSize]="ventas.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+                      [rotate]="true" [boundaryLinks]="true" aria-label="Default pagination"></ngb-pagination>
+                  </div>
+                </div>
+
+              </div>
             </div>
-            <!--end::Container-->
+
           </div>
-          <!--end::Post-->
+          <!--end::Container-->
         </div>
-        <!--end::Content-->
-       
+        <!--end::Post-->
       </div>
-      <!--end::Wrapper-->
+      <!--end::Content-->
+
     </div>
-    <!--end::Page-->
+    <!--end::Wrapper-->
   </div>
+  <!--end::Page-->
+</div>
